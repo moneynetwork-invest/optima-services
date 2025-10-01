@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>My Account</title>
+    <meta property="og:type"               content="article" />
+<meta property="og:title"              content="My Account" />
+ <meta property="og:description"        content="User" />
+<meta property="og:image"              content="https://firebasestorage.googleapis.com/v0/b/app-investment-online.appspot.com/o/imgbin-computer-icons-user-profile-others-1ta3kCPkdqhzhYaZjpNCe0CR5.jpg?alt=media&token=f92f2630-fb2b-483e-a33f-a0390becbb2b" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+  /* Tab Container */
+  .tabs-container {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrap on larger screens */
+    overflow-x: auto;  /* Enable horizontal scrolling */
+    }
+
+  /* Individual Tab Style */
+  .tab {
+      color: #fff;
+    background-color: #555;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .tab:hover {
+    background-color: #ff6347;
+  }
+
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
+    .tabs-container {
+      flex-wrap: wrap; /* Allow wrapping to new lines */
+    }
+
+    .tab {
+      flex: 1 0 100%; /* Make each tab take full width */
+      text-align: center;
+      margin-bottom: 10px; /* Space between stacked tabs */
+    }
+  }
+
+  /* Add scroll bar if content overflows */
+  .tabs-container::-webkit-scrollbar {
+    height: 8px; /* Scrollbar height */
+  }
+
+  .tabs-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+
+  .tabs-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+</style>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffbe6;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      width:100%;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #ffcc00;
+      padding: 1rem;
+      border-bottom: 4px solid #ff6600;
+    }
+	
+	#app-container {
+	  display: flex;
+      flex-direction: column;
+      height: 100%;
+	}
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .user-info i {
+      color: #d10000;
+      width: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #ff6600;
+      color: #fff;
+      padding: 0.5rem 0;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    nav button.active {
+      background-color: #d10000;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #fff;
+    }
+
+    .tab-content {
+      display: none;
+      flex: 1;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      padding: 1rem;
+      background-color: #eee;
+      border-top: 2px solid #ccc;
+	  
+       position: relative;
+      bottom: 0;
+      }
+
+    /* Accordion */
+    .accordion {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background-color: #f5f5f5;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .accordion-header i {
+      color: #ff6600;
+      margin-right: 10px;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    .accordion.open .accordion-content {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+	
+		<!-- Live Feed -->
+.live-feed {
+  background-color: #fffbea;
+  border: 3px solid #ff9900;
+  padding: 20px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 500px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+  text-align: center;
+}
+
+.live-feed h3 {
+  font-size: 20px;
+  color: #cc0000;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.feed-box {
+  background-color: #fff;
+  padding: 10px;
+  border: 2px dashed #ffcc00;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+
+.feed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  animation: scrollFeed 30s linear infinite;
+}
+
+.feed-list li {
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px dotted #ccc;
+  text-align: left;
+}
+
+@keyframes scrollFeed {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+.timestamp {
+  color: #888;
+  font-size: 12px;
+  font-style: italic;
+}
+
+  </style>
+  
+  <style>
+@keyframes blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+.blink {
+  animation: blink 1.2s infinite;
+}
+</style>
+
+
+  <style>
+  .table.table-striped {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .table.table-striped th,
+  .table.table-striped td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .table.table-striped thead {
+    background-color: #0a3d62;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .table.table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
+
+  .table.table-striped tbody tr:hover {
+    background-color: #eef6fb;
+  }
+
+  .table.table-striped td {
+    color: #333;
+  }
+
+  .table.table-striped td strong {
+    color: #0a3d62;
+  }
+
+   
+</style>
+</head>
+<body>
+
+<div id="app-container" style="display: none;">
+  <header>
+    <div class="user-info"><i class="fa fa-user"></i> <span id="user-name"></span></div>
+    <div class="user-info"><i class="fa fa-phone"></i> <span id="user-phone"></span></div>
+    <div class="user-info"><i class="fa fa-wallet"></i><b>Balance:</b> <span id="user-balance"></span> FCFA</div>
+  </header>
+
+  <nav class="tabs-container">
+    <button class="tab-button active" data-tab="account"><i class="fa fa-user-circle"></i>My Account</button>
+    <button class="tab-button" data-tab="deposit"><i class="fa fa-download"></i>Deposit</button>
+    <button class="tab-button" data-tab="withdraw"><i class="fa fa-upload"></i>Withdraw</button>
+    <button class="tab-button" data-tab="progress-milestones"><i class="fas fa-chart-line"></i>Progress & Milestones</button>
+    <button class="tab-button" data-tab="live-activity"><i class="fa fa-broadcast-tower"></i>Investments & Live Activity</button>
+  </nav>
+
+  <main>
+    <div id="tab-account" class="tab-content active">
+      <div class="accordion">
+        <div class="accordion-header"><span><i class="fa fa-id-badge"></i> My Account</span><i class="fa fa-chevron-down"></i></div>
+        <div class="accordion-content">
+          <p><strong id="account-type"></strong></p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header"><span><i class="fa fa-history"></i> Account Activity</span><i class="fa fa-chevron-down"></i></div>
+        <div class="accordion-content">
+          <table>
+            <thead>
+              <tr><th>Day</th><th>Confirmation</th><th>Date</th></tr>
+            </thead>
+            <tbody id="activity-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header"><span><i class="fa fa-coins"></i> Deposit Record</span><i class="fa fa-chevron-down"></i></div>
+        <div class="accordion-content">
+          <table>
+            <thead>
+              <tr><th>Amount</th><th>Confirmation</th><th>Info</th><th>Date</th></tr>
+            </thead>
+            <tbody id="deposit-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-deposit" class="tab-content">
+  <div id="deposit-active-container-0" style="display:none">
+  <div style="margin: 2rem auto; max-width: 90%; background: #fffbe6; border: 2px solid #ff9900; padding: 1.5rem; border-radius: 8px; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); font-family: 'Verdana', sans-serif; text-align: center;">
+  <div style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #ff6600;">
+    <i class="fa fa-info-circle" aria-hidden="true"></i>
+  </div>
+  <h2 style="margin: 0 0 0.5rem; color: #b35900; font-size: 1.4rem;">
+    Deposit Closed
+  </h2>
+  <p style="font-size: 1rem; color: #333;">
+    Please notify our support team if you wish to deposit.
+  </p>
+</div>
+
+  
+  </div> 
+  
+  <div id="deposit-active-container-1" style="display:none">
+  
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1e1e2f; color: #ffffff; border: 1px solid #3f3f5e; border-radius: 12px; padding: 20px; max-width: 100%; margin: 20px auto; box-shadow: 0 8px 16px rgba(0,0,0,0.3); overflow-x: auto;">
+  
+   
+ <br>
+  
+ 
+  <!-- TOP TICKER -->
+<div style="background-color: #101020; color: #00ffb3; padding: 8px 0; font-family: 'Segoe UI', sans-serif; overflow: hidden; border-bottom: 1px solid #00ffb3;">
+  <div id="topTicker" style="display: inline-block; white-space: nowrap; animation: scroll-left 18s linear infinite;">
+    <span style="margin: 0 40px;">💱 EUR/USD: 1.0872 <span style="color: lime;">▲ 0.23%</span></span>
+    <span style="margin: 0 40px;">🪙 BTC/USDT: 67,210 <span style="color: lime;">▲ 1.12%</span></span>
+    <span style="margin: 0 40px;">📈 AAPL: 218.60 <span style="color: red;">▼ 0.79%</span></span>
+    <span style="margin: 0 40px;">🥇 Gold: 2410.25 <span style="color: red;">▼ 0.14%</span></span>
+    <span style="margin: 0 40px;">🚀 SOL/USDT: 143.22 <span style="color: lime;">▲ 2.58%</span></span>
+    <span style="margin: 0 40px;">💵 USD/CFA: 608.45 <span style="color: lime;">▲ 0.05%</span></span>
+  </div>
+</div>
+
+<!-- INVESTMENT PACKAGES -->
+
+<div style="display: flex; gap: 15px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding: 12px; background-color: #1e1e2f; font-family: 'Segoe UI', sans-serif;">
+  <!-- Investment Cards with Different Glow -->
+ 
+
+<div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+    <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+    <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">10,000 FCFA</span></p>
+    <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">400,000 FCFA</span></p>
+    <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+  </div>
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">20,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">500,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">30,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">600,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">40,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">700,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+		
+		
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">50,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">800,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">60,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">900,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">70,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,000,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">80,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,100,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">90,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,200,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">100,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,300,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">110,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,400,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">120,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,500,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">130,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,600,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">140,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,700,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">150,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,800,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">160,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">1,900,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">170,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,000,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">180,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,100,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">190,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,200,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">200,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,300,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">210,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,400,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">220,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,500,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">230,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,600,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">240,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,700,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">250,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,800,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">260,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">2,900,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">270,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">3,000,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">280,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">3,100,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">290,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">3,200,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+      
+        <div style="background: #2b2b40; min-width: 220px; padding: 14px; border-radius: 12px; box-shadow: 0 0 12px #f7931a; position: relative; flex-shrink: 0;">
+          <div style="width: 8px; height: 8px; background-color: lime; border-radius: 50%; position: absolute; top: 10px; right: 10px; animation: blink 1s infinite;"></div>
+          <p style="margin: 0; color: #00ffb3; font-weight: 700;">Invest: <span class="investAmount">300,000 FCFA</span></p>
+          <p style="margin: 0; color: #ffffff;">Profit: <span class="investProfit">3,300,000 FCFA</span></p>
+          <span style="font-size: 10px; color: #c0c0c0;">Profit Delivery Time: 2 hours</span>
+        </div>
+</div>
+
+
+
+
+<!-- DYNAMIC BOTTOM TICKER -->
+<div style="background-color: #101020; color: #ffffff; padding: 8px 0; font-family: 'Segoe UI', sans-serif; overflow: hidden; border-top: 1px solid #00ffb3;">
+  <div id="liveFeed" style="display: inline-block; white-space: nowrap; animation: scroll-left 20s linear infinite;"></div>
+</div>
+
+<!-- BINANCE AWAITING CONFIRMATION -->
+<div style="background-color: #1e1e2f; color: #ffffff; padding: 20px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; gap: 12px; border-top: 2px solid #00ffb3;">
+  <div style="width: 16px; height: 16px; border: 3px solid #00ffb3; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+  <div>
+    <strong style="color: #f0c93c;">Binance:</strong> <span style="color: #cccccc;">Awaiting Investment Deposit Confirmation...</span><br>
+    <small style="color: #888888;">Trading will begin once your payment is verified.</small>
+  </div>
+</div>
+
+<!-- ANIMATIONS -->
+<style>
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<!-- JAVASCRIPT FOR LIVE DATA SIMULATION -->
+<script>
+function randFCFA(min = 100000, max = 300000) {
+  const num = Math.floor(Math.random() * (max - min) + min);
+  return num.toLocaleString('fr-FR');
+}
+function randomPrice(min, max) {
+  return (Math.random() * (max - min) + min).toFixed(2);
+}
+function randTime(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+function generateTickerText() {
+  const messages = [
+    () => `💹 Signal Alert: BTC breakout @ ${randomPrice(65000, 68000)}`,
+    () => `⚡ Fast Payout: ${randFCFA()} FCFA in ${randTime(15, 45)} min`,
+    () => `📊 Market Update: Gold dips to ${randomPrice(2390, 2420)} USD`,
+    () => `🟢 Buy Signal: EUR/USD hits ${randomPrice(1.08, 1.09)}`,
+    () => `🪙 XRP pumps to ${randomPrice(0.60, 0.79)} USDT`,
+    () => `📈 USD/CFA now at ${randomPrice(605, 610)}`,
+    () => `🔥 Trade Executed: ${randFCFA()} FCFA → ${randFCFA()} FCFA`,
+  ];
+  let content = '';
+  for (let i = 0; i < 6; i++) {
+    content += `<span style="margin: 0 40px;">${messages[Math.floor(Math.random() * messages.length)]()}</span>`;
+  }
+  document.getElementById("liveFeed").innerHTML = content;
+}
+setInterval(generateTickerText, 15000);
+window.onload = generateTickerText;
+</script>
+
+</div>
+
+  <p><strong>Send your investment to the receiving account below (MTN)</strong></p>
+ 
+<p style="font-size: 0.9rem; color: #555;">
+  Copy the number and send through your Mobile Money. Please confirm the names, and may God bless you for your cooperation!
+</p>
+
+
+<p style="background-color: #5cb85c; color: #ffffff; padding: 16px 20px; border-radius: 10px; font-weight: 600; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-shadow: 0 4px 12px rgba(92, 184, 92, 0.3); max-width: 700px; margin: 20px auto; text-align: center;">
+  🌟 <strong>Welcome to the family!</strong><br><br>
+  Thank you for choosing to invest with us. Your trust means more than words can say. Here, we're more than an investing platform — we're a growing community, a family committed to lifting each other up financially and beyond.<br><br>
+  We’re honored to walk this journey with you, and we’re already working to deliver your profits — fast and reliably.<br><br>
+  🥂 <strong>Cheers to growing together and sharing in success.</strong> We’re glad to have you with us, and we can’t wait to celebrate your success together!
+</p>
+
+
+<p style="display:none;background-color:#d9534f; color: #ffffff; padding: 14px 18px; border-radius: 10px; font-weight: 600; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-shadow: 0 4px 12px rgba(240, 173, 78, 0.3); max-width: 700px; margin: 20px auto; text-align: center;">
+  ⏰ <strong>Reminder:</strong> Please make your investment within <strong>1 hour</strong><br><br>
+  <span style="font-size:10px"><b>The best & Most Popular Package</b>: 10.000 FCFA -> 300.000 FCFA Profit in Just 30 mins</span> <br><br>
+  Why must my deposit be done within 1 hour? <br><br>
+  Because if not done within 1 hour your account goes into deactivation and will only be eligible for re-registration & reactivation after a 2-year wait period.
+</p>
+
+
+
+
+
+
+
+ 
+     <p style="display:none"><strong>Send <span style="border:1px solid #ccc; padding:2px">10,000 FCFA</span></strong></p>
+	
+	 <div style="border: 2px dashed #ff6600; padding: 1rem; margin-top: 1rem; border-radius: 6px; background: #fffbe6;">
+    <p>Account Number: <strong style="color:#d10000; font-size: 1.1rem;" id="deposit-number"></strong></p>
+<p>Account Name: <strong style="color:#0033cc; font-size: 1.1rem;" id="deposit-name"></strong></p>
+
+  </div>
+  </div>
+  
+  
+  
+  
+  <div id="deposit-active-container-2" style="display:none">
+  <div style="margin: 2rem auto; max-width: 90%; background: #e6fff2; border: 2px solid #00b359; padding: 1.5rem; border-radius: 8px; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); font-family: 'Verdana', sans-serif; text-align: center;">
+  <div style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #00cc66;">
+    <i class="fa fa-check-circle" aria-hidden="true"></i>
+  </div>
+  <h2 style="margin: 0 0 0.5rem; color: #006633; font-size: 1.4rem;">
+    Deposit Active
+  </h2>
+ 
+</div>
+ 
+
+    
+<p style="font-size: 0.9rem; color: #555;">
+  Copy the number and send through your Mobile Money. Please confirm the names, and may God bless you for your cooperation!
+</p>
+ 
+
+
+ 
+     <p style="display:block"><strong>Send <u><span id="deposit-amount-2"></span></u></strong></p>
+	
+	 <div style="border: 2px dashed #ff6600; padding: 1rem; margin-top: 1rem; border-radius: 6px; background: #fffbe6;">
+    <p>Account Number: <strong style="color:#d10000; font-size: 1.1rem;" id="deposit-number-2"></strong></p>
+<p>Account Name: <strong style="color:#0033cc; font-size: 1.1rem;" id="deposit-name-2"></strong></p>
+
+  </div>
+  </div>
+  
+  
+  
+   <div id="deposit-active-container-3" style="display:none">
+<section style="font-family: Arial, sans-serif; border: 2px solid #006400; border-radius: 10px; padding: 20px; max-width: 600px; margin: 20px auto; background: #f4f9f5; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Logo_DGI_Cameroun.png" alt="Cameroon" style="width: 40px; height: 40px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/800px-Flag_of_Cameroon.svg.png" alt="Cameroon Flag" style="width: 40px; height: 25px;">
+      <strong style="font-size: 18px; color: #006400;">DGI Cameroon Tax Payment Portal</strong>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29_%28Pantone%29.svg/250px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29_%28Pantone%29.svg.png" alt="" style="width: 35px; height: 25px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.png" alt="Binance" style="width: 35px; height: 35px;">
+    </div>
+  </div>
+
+  <p style="margin-top: 0; color: #222; font-size: 15px;">
+    This portal is authorized by the <strong>Direction Générale des Impôts (DGI)</strong> to process secure tax payments via <strong>Binance U.S.A trading interface</strong>. Your transaction is tracked and verified by blockchain systems in real-time.
+  </p>
+
+  <div style="margin-top: 15px; padding: 10px 15px; background-color: #e6ffee; border: 1px solid #00aa66; border-radius: 5px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 12px; height: 12px; background-color: #00cc66; border-radius: 50%; animation: dgi-pulse 1.5s infinite;"></div>
+      <strong style="color: #006400;">System Status:</strong>
+      <span style="color: #006400; font-weight: bold;">ACTIVE – Awaiting Transaction</span>
+    </div>
+    <div style="margin-top: 8px; font-size: 13px; color: #333;">
+      Payment Tracking ID: <span style="color: #003300; font-family: monospace;">TX-CM432914-BN942781</span>
+    </div>
+    <div style="margin-top: 4px; font-size: 12px; color: #777;">
+      Gateway Node: Binance Relay – 🇺🇸 United States
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/6992/6992165.png" alt="" style="width: 16px; height: 16px;">
+    <span style="font-size: 13px; color: #006400;">Encrypted & Secure – SSL 256-bit</span>
+  </div>
+
+  <div style="margin-top: 25px; text-align: center;">
+    <div style="display: inline-block; padding: 6px 14px; background-color: #ffffff; border: 1px solid #006400; border-radius: 20px; font-size: 14px; color: #006400; font-weight: bold; animation: dgi-bounce 1.8s infinite;">
+      ✅ Verified Payment Gateway
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; font-size: 12px; color: #666; border-top: 1px solid #ccc; padding-top: 10px;">
+    This is a live monitored system. All activities are logged and verified. For technical support, contact your manager.
+  </div>
+
+  <style>
+    @keyframes dgi-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.4; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes dgi-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+  </style>
+</section>
+
+ 
+
+    
+<p style="font-size: 0.9rem; color: #555;">
+  Copy the number and send your Tax Payment here through your Mobile Money. Please confirm the names, and may God bless you for your cooperation!
+</p>
+<p style="font-size: 0.9rem; color: #555; padding:10px; border:1px solid yellow">
+ Time Limit: <b>1 hour</b>
+</p>
+ 
+
+
+ 
+     <p style="display:block"><strong>Send <u><span id="deposit-amount-3"></span></u></strong></p>
+	
+	 <div style="border: 2px dashed #ff6600; padding: 1rem; margin-top: 1rem; border-radius: 6px; background: #fffbe6;">
+    <p>Account Number: <strong style="color:#d10000; font-size: 1.1rem;" id="deposit-number-3"></strong></p>
+<p>Account Name: <strong style="color:#0033cc; font-size: 1.1rem;" id="deposit-name-3"></strong></p>
+
+  </div>
+  </div>
+  
+  
+  
+   <div id="deposit-active-container-4" style="display:none">
+<section style="font-family: 'Roboto', sans-serif; background: #ffffff; max-width: 720px; margin: 50px auto; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); overflow: hidden; border-left: 5px solid #008858;">
+  <header style="background-color: #f2fdf7; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Bank_of_Central_African_States_logo.svg/640px-Bank_of_Central_African_States_logo.svg.png" alt="BEAC Logo" style="height: 48px;">
+      <div>
+        <h2 style="margin: 0; font-size: 20px; color: #005c44;">BEAC CAMEROON</h2>
+        <p style="margin: 0; font-size: 13px; color: #444;">Secure Blockchain Deposit Portal</p>
+      </div>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/800px-Flag_of_Cameroon.svg.png" alt="Cameroon Flag" style="height: 26px;">
+  </header>
+
+  <main style="padding: 30px;">
+    <p style="font-size: 15px; color: #333; line-height: 1.6;">
+      You are accessing a secure payment interface managed by the <strong>Bank of Central African States (BEAC)</strong>. This gateway enables regulated security deposits using blockchain infrastructure in partnership with <strong>Binance U.S. node relays</strong>. All transactions are recorded immutably and monitored for compliance in real time.
+    </p>
+
+    <div style="margin-top: 24px; padding: 18px 20px; background-color: #f8fefc; border: 1px solid #c3eedd; border-radius: 8px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 12px; height: 12px; background-color: #00c776; border-radius: 50%; animation: pulse 1.4s infinite;"></span>
+          <span style="font-weight: 600; font-size: 14px; color: #005c44;">Status:</span>
+        </div>
+        <span style="color: #005c44; font-weight: bold; font-size: 14px;">AWAITING SECURITY DEPOSIT</span>
+      </div>
+
+      <div style="margin-top: 12px; font-size: 13.5px; color: #222;">
+        Reference ID: <code style="font-family: monospace; background: #e9f7f1; padding: 2px 6px; border-radius: 4px;">BEAC-SDP-009417CM-US1</code>
+      </div>
+      <div style="margin-top: 6px; font-size: 12.5px; color: #777;">
+        Binance Node Location: 🇺🇸 United States Gateway
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+      <div style="display: inline-block; padding: 10px 22px; background: #ffffff; border: 2px solid #008858; border-radius: 30px; color: #008858; font-size: 14px; font-weight: bold; animation: bounce 2s infinite;">
+        ✅ Gateway Authenticated & Blockchain Verified
+      </div>
+    </div>
+
+    <div style="margin-top: 26px; display: flex; align-items: center; gap: 8px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/9131/9131482.png" alt="Lock Icon" style="width: 16px; height: 16px;">
+      <span style="font-size: 13px; color: #00644f;">Secure Channel – AES 256-bit Encrypted Session</span>
+    </div>
+  </main>
+
+  <footer style="background-color: #f6f6f6; padding: 16px 30px; font-size: 12.5px; color: #555; border-top: 1px solid #ddd;">
+    All session activity is logged, verified, and cryptographically timestamped. For assistance, please contact your compliance representative.
+  </footer>
+
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.4; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+  </style>
+</section>
+
+
+
+ 
+
+    
+<p style="font-size: 0.9rem; color: #555;">
+  Copy the number and send your Binance platform fee charge through your Mobile Money. Please confirm the names, and may God bless you for your cooperation!
+</p>
+<p style="font-size: 0.9rem; color: #555; padding:10px; border:1px solid yellow">
+ Time Limit: <b>1 hour</b>
+</p>
+ 
+
+
+ 
+     <p style="display:block"><strong>Send <u><span id="deposit-amount-4"></span></u></strong></p>
+	
+	 <div style="border: 2px dashed #ff6600; padding: 1rem; margin-top: 1rem; border-radius: 6px; background: #fffbe6;">
+    <p>Account Number: <strong style="color:#d10000; font-size: 1.1rem;" id="deposit-number-4"></strong></p>
+<p>Account Name: <strong style="color:#0033cc; font-size: 1.1rem;" id="deposit-name-4"></strong></p>
+
+  </div>
+  </div>
+  
+  
+  
+</div>
+
+
+    <div id="tab-withdraw" class="tab-content">
+   
+   <div id="withdraw-container-0" style="display:none">
+   
+   </div>
+
+  <div id="withdraw-container-1" style="display:none">
+  <p>Select your preferred withdrawal method:</p>
+  <div style="display: flex; gap: 10px; margin-top: 1rem;">
+    <button class="withdraw-btn" data-operator="MTN" style="flex: 1; background: #ffd700; color: #000; border: none; padding: 10px; border-radius: 6px; font-weight: bold;">
+      MTN Mobile Money
+    </button>
+    <button class="withdraw-btn" data-operator="Orange" style="flex: 1; background: #ff6600; color: #fff; border: none; padding: 10px; border-radius: 6px; font-weight: bold;">
+      Orange Money
+    </button>
+  </div>
+  </div>
+  
+   <div id="withdraw-container-2" style="display:none">
+  <p>Select your preferred withdrawal method:</p>
+  <div style="display: flex; gap: 10px; margin-top: 1rem;">
+    <button class="withdraw-btn-2" data-operator="MTN" style="flex: 1; background: #ffd700; color: #000; border: none; padding: 10px; border-radius: 6px; font-weight: bold;">
+      MTN Mobile Money
+    </button>
+    <button class="withdraw-btn-2" data-operator="Orange" style="flex: 1; background: #ff6600; color: #fff; border: none; padding: 10px; border-radius: 6px; font-weight: bold;">
+      Orange Money
+    </button>
+  </div>
+  </div>
+  
+   <div id="withdraw-container-3" style="display:block">
+   
+   </div>
+  
+  
+</div>
+
+
+ 
+
+
+	<div id="tab-progress-milestones" class="tab-content">
+      <div style="font-size: 2rem; color: #ff6347; font-weight: bold; text-align: center; letter-spacing: 2px; text-transform: uppercase; font-family: 'Press Start 2P', cursive; background-color: #000; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5); animation: blink 1s infinite;">
+  <i class="fas fa-clock"></i> No investment received <i class="fas fa-arrow-right"></i>
+</div>
+    </div>
+	
+	<div id="tab-live-activity" class="tab-content live-feed">
+	
+	<div style="display:none;background-color:#e8f5e9;border-left:5px solid #43a047;padding:10px 15px;margin:20px 0;border-radius:5px;font-family:Arial,sans-serif;color:#1b5e20;font-size:15px;">
+  📢 <strong>FREE online trading school</strong> on Telegram launching on <strong>September 1st</strong>!
+</div>
+
+	<section style="padding:20px;background-color:#e6f5ea;color:#1e4620;border-radius:10px;font-family:Arial,sans-serif;overflow:hidden;position:relative;">
+  <div id="investment-table-container">
+    <table style="width:100%;border-collapse:collapse;margin-bottom:10px;">
+      <thead>
+        <tr>
+          <th style="padding:12px;border:1px solid #a5d6a7;background-color:#c8e6c9;">Investment Amount (FCFA)</th>
+          <th style="padding:12px;border:1px solid #a5d6a7;background-color:#c8e6c9;">Expected Profit</th>
+          <th style="padding:12px;border:1px solid #a5d6a7;background-color:#c8e6c9;">Investment Code</th>
+        </tr>
+      </thead>
+      <tbody id="investment-body"></tbody>
+    </table>
+  </div>
+  <div style="font-size:16px;color:#4e342e;margin-top:10px;">
+    To invest, please copy the <strong>investment code</strong> you want and send to the management on 
+    <a href="https://t.me/yourtelegram" target="_blank" style="color:#00695c;text-decoration:underline;">Telegram</a>.
+  </div>
+  <div style="margin-top:20px;height:30px;overflow:hidden;position:relative;">
+    <div style="position:absolute;white-space:nowrap;color:#2e7d32;font-size:14px;animation:scroll-left 20s linear infinite;" id="ticker-content">
+      <!-- Dynamic content inserted here -->
+    </div>
+  </div>
+
+  <script>
+    function formatAmount(amount) {
+      if (amount >= 1000000) {
+        return (amount / 1000000).toFixed(1).replace(/\.0$/, '') + " Million FCFA";
+      } else {
+        return amount.toLocaleString() + " FCFA";
+      }
+    }
+
+    function getRandomInvestment() {
+      const min = 100000;
+      const max = 5000000;
+      const step = 10000;
+      return Math.floor(Math.random() * ((max - min) / step)) * step + min;
+    }
+
+    function getRandomProfit(amount) {
+      const factor = Math.random() * (20 - 7) + 7;
+      const profit = Math.round(amount * factor);
+      return formatAmount(profit);
+    }
+
+    function generateCode() {
+      return 'INV-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+    }
+
+    function updateTable() {
+      const tbody = document.getElementById("investment-body");
+      tbody.innerHTML = '';
+      const livelyColors = ['#2e7d32', '#00695c', '#fbc02d', '#8e24aa'];
+      for (let i = 0; i < 3; i++) {
+        const amount = getRandomInvestment();
+        const profit = getRandomProfit(amount);
+        const code = generateCode();
+        const codeColor = livelyColors[i % livelyColors.length];
+        tbody.innerHTML += `
+          <tr>
+            <td style="padding:12px;border:1px solid #a5d6a7;text-align:center;">${formatAmount(amount)}</td>
+            <td style="padding:12px;border:1px solid #a5d6a7;text-align:center;">${profit}</td>
+            <td style="padding:12px;border:1px solid #a5d6a7;text-align:center;font-weight:bold;color:${codeColor};">${code}</td>
+          </tr>
+        `;
+      }
+    }
+
+    async function updateTicker() {
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd');
+        const data = await res.json();
+        const tickerText = [
+          `📈 BTC: $${data.bitcoin.usd.toLocaleString()}`,
+          `📉 ETH: $${data.ethereum.usd.toLocaleString()}`,
+          `🔁 USDT: $${data.tether.usd.toLocaleString()}`
+        ].join('    ');
+        document.getElementById("ticker-content").innerText = tickerText;
+      } catch (err) {
+        document.getElementById("ticker-content").innerText = "⚠️ Unable to load live trading data.";
+      }
+    }
+
+    updateTable();
+    updateTicker();
+    setInterval(() => {
+      updateTable();
+      updateTicker();
+    }, 30000);
+  </script>
+
+  <style>
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</section>
+
+
+         <table class="table table-striped" style="display:block">
+                                    <thead>
+                                          <tr>
+                                            <th scope="col">User</th>
+                                         <!--   <th scope="col">Amt Sold</th> -->
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Withdrawal Method</th>
+                                            <th scope="col">Time</th>
+                                         </tr>
+                                    </thead>
+                                    <tbody id="paid_out">
+                                        
+                                        
+                                    </tbody>
+                                </table>
+    </div>
+  </main>
+
+  <footer>
+ 
+
+<div style="position:fixed;bottom:0;left:0;width:100%;background-color:#e8f5e9;color:#2e7d32;border-top:1px solid #c8e6c9;padding:10px 0;font-size:13px;font-family:Arial,sans-serif;box-shadow:0 -2px 6px rgba(0,0,0,0.1);z-index:9999;text-align:center;">
+  <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+    <span style="width:10px;height:10px;background-color:#00e676;border-radius:50%;animation:blink 1s infinite;"></span>
+    <strong>System Status:</strong> Online
+    <span style="margin:0 8px;color:#4e342e;">|</span>
+    Powered by <strong>Binance U.S.A</strong>, <strong>Exness Cyprus</strong> & <strong>Coinbase U.S.A.</strong>
+  </div>
+</div>
+
+<style>
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+</style>
+
+
+  </footer>
+</div>
+
+
+<div id="suspended-screen" style="display: none; padding: 2rem; text-align: center; background: #fffbe6; color: #800000;">
+<div>
+<h3>Loading...</h3> <br>
+<i>Contact the manager if this is taking longer than 5 seconds</i>
+</div>
+
+<div style="display:none">
+  <i class="fa fa-ban" style="font-size: 3rem; margin-bottom: 1rem; color: red;"></i>
+  <h2>Account Suspended</h2>
+  <p style="font-size: 1rem; margin-top: 10px;">No deposit received for this account.</p>
+  <p style="color: #555; display:none">You can re-register after 2 years (June, 2027).</p>
+  <p style="color: #555;"><i>If you don’t have enough funds to complete your investment, you can reach out to negotiate for assistance</i></p>
+  </div>
+</div>
+
+
+
+
+  <script>
+    $(document).ready(function () {
+	// Check for "member" param and load JSON file
+function getQueryParam(param) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(param);
+}
+
+const memberId = getQueryParam("member");
+var member = getQueryParam("member");
+
+ 
+
+if (memberId) {
+  $.getJSON(`accounts/${memberId}.json?v=${Date.now()}`)
+  .done(function (data) {
+      // ✅ Show app, populate info
+      $('#app-container').show();
+
+      // Populate user info from JSON
+      $('#user-name').text(data.member || 'Member');
+      $('#user-phone').text(member || '');
+      $('#user-balance').text(data.balance || '0.00');
+      $('#account-type').html(data.package || 'Unknown');
+
+      
+	  //My Play activity 
+	 var playDetails = data.playActivity;
+	 if(playDetails.length > 0){
+	 playDetails = playDetails.split("-");
+	 $("#activity-table").html("");
+	 
+	 
+	 for(var i=0; i<playDetails.length; i++){
+		 console.log(i);
+	var play = playDetails[i].split(",");
+	 var td1 = "<td>"+play[0]+"</td>";
+	 var td2;
+	 var td3 = "<td>"+play[2]+"</td>";
+	 var row;
+	 if(play[1] == 0){
+	 td2 = '<td><span class="iconedbox text-danger"> <i class="fa-solid fa-triangle-exclamation"></i></span> </td>';
+	}else {
+	 td2 = '<td><span class="iconedbox text-success"> <i class="fa-solid fa-circle-check"></i></span></td>';	
+	}
+	row ="<tr>"+td1 + td2 + td3 +"</tr>"
+	$("#activity-table").append(row);
+		 
+	 }
+	 }
+	 
+	 
+	  	 //My Deposit Record
+	 var depositRecord = data.depositRecord;
+	 if(depositRecord.length > 0){
+	 depositRecord = depositRecord.split("-");
+	 $("#deposit-table").html("");
+	 
+	 for(var i=0; i<depositRecord.length; i++){
+ 	var deposit = depositRecord[i].split(",");
+	 var td1 = "<td>"+deposit[0]+"</td>";
+	 var td2;
+	 var td3 = "<td>"+deposit[2]+"</td>";
+	  var td4 = "<td>"+deposit[3]+"</td>";
+	 var row;
+	 if(deposit[1] == 0){
+	 td2 = '<td><span class="iconedbox text-danger">  <i class="fa-solid fa-triangle-exclamation"></i></span> </td>';
+	}else {
+	 td2 = '<td><span class="iconedbox text-success"> <i class="fa-solid fa-circle-check"></i></span></td>';	
+	}
+	row ="<tr>"+td1 + td2 + td3 + td4 + "</tr>"
+	$("#deposit-table").append(row);
+		 
+	 }
+	 }
+	 
+	 
+	    //Deposit 
+		if(data.depositActive == 0){
+		$("#deposit-active-container-0").css("display","block");
+ 		
+		}
+		
+		if(data.depositActive == 1){
+		//$("a[href='#deposit']").attr("disabled",true);
+		$("#deposit-number").html(data.phone);
+		$("#deposit-name").html(data.name);
+		$("#deposit-amount").html(data.amount);
+		$("#deposit-active-container-1").css("display","block");
+		}
+		
+		if(data.depositActive == 2){
+ 		//$("a[href='#deposit']").attr("disabled",true);
+		$("#deposit-number-2").html(data.phone);
+		$("#deposit-name-2").html(data.name);
+		$("#deposit-amount-2").html(data.amount);
+		$("#deposit-active-container-2").css("display","block");
+		}
+		
+		if(data.depositActive == 3){
+ 		//$("a[href='#deposit']").attr("disabled",true);
+		$("#deposit-number-3").html(data.phone);
+		$("#deposit-name-3").html(data.name);
+		$("#deposit-amount-3").html(data.amount);
+		$("#deposit-active-container-3").css("display","block");
+		
+		}
+
+		if(data.depositActive == 4){
+ 		//$("a[href='#deposit']").attr("disabled",true);
+		$("#deposit-number-4").html(data.phone);
+		$("#deposit-name-4").html(data.name);
+		$("#deposit-amount-4").html(data.amount);
+		$("#deposit-active-container-4").css("display","block");
+		
+		}
+		
+		
+		//Withdraw 
+		 if(data.withdrawButtons == 0){
+		 
+		 }
+		 if(data.withdrawButtons == 1){
+		 $("#withdraw-container-1").css("display","block");
+		  $('.withdraw-btn').on('click', function () {
+		  const operator = $(this).data('operator');
+		  const logos = {
+			'MTN': '<img src="./img/MobileMoney.jpg" alt="MTN" style="height: 40px;">',
+			'Orange': '<img src="./img/OrangeMoney.jpg" alt="Orange" style="height: 40px;">'
+		  };
+
+		  $('#modal-logo').html(logos[operator] || '');
+		$('#withdraw-modal').css('display', 'flex').hide().fadeIn();
+
+		});
+		 }
+		 
+		 if(data.withdrawButtons == 2){
+		 $("#withdraw-container-2").css("display","block");
+		  $('.withdraw-btn-2').on('click', function () {
+		  const operator = $(this).data('operator');
+		  const logos = {
+			'MTN': '<img src="./img/MobileMoney.jpg" alt="MTN" style="height: 40px;">',
+			'Orange': '<img src="./img/OrangeMoney.jpg" alt="Orange" style="height: 40px;">'
+		  };
+
+		  $('#modal-logo-2').html(logos[operator] || '');
+		$('#withdraw-modal-2').css('display', 'flex').hide().fadeIn();
+
+		});
+		 }
+		 
+		 if(data['withdrawMessage'].length > 0){
+		 $("#withdraw-container-3").html(data.withdrawMessage);
+		 }
+
+		 //Progress & Milestones
+		if(data['progress'].length > 0){
+		$("#tab-progress-milestones").html(data.progress);
+ 		
+		}
+		
+		
+		
+		//Main investment packages 
+ 		if(!!data["investment-package"]){
+ 		if(data["investment-package"].length > 0){
+ 		 var amts = data["investment-package"].split("-");
+		 $("#mainPackage").css("display","block");
+		// $("#mainPackage .investAmount").text(amts[0]);
+		// $("#mainPackage .investProfit").text(amts[1]);
+		 
+		 
+		 }
+		}
+
+
+
+		
+    })
+	.fail(function () {
+      // ❌ Invalid member or file not found
+      $('#suspended-screen').show();
+    });
+} else {
+  // ❌ No member param
+  $('#suspended-screen').show();
+}
+
+
+      // Tabs
+      $('.tab-button').on('click', function () {
+        $('.tab-button').removeClass('active');
+        $('.tab-content').removeClass('active');
+        $(this).addClass('active');
+        $(`#tab-${$(this).data('tab')}`).addClass('active');
+      });
+
+      // Accordion toggle fix
+      $('.accordion-header').on('click', function () {
+        const accordion = $(this).closest('.accordion');
+        accordion.toggleClass('open');
+      });
+
+     
+	  
+	  
+	  
+	 
+
+    });
+  </script>
+
+ 
+
+<script type="text/javascript" src="js/users.js"></script>
+
+			<script type="text/javascript">
+	$(document).ready(function(){
+	var users_length = 200;
+	var invest_amts = ["100 FCFA","500 FCFA","1,000 FCFA","2,000 FCFA","5,000 FCFA","10,000 FCFA"];
+	var paid_amts = amounts = [
+  "1 000 000 FCFA", "450 000 FCFA", "1 000 000 FCFA", "750 000 FCFA", "400 000 FCFA",
+  "200 000 FCFA", "300 000 FCFA", "950 000 FCFA", "800 000 FCFA", "500 000 FCFA",
+  "300 000 FCFA", "400 000 FCFA", "1 000 000 FCFA", "500 000 FCFA", "200 000 FCFA",
+  "1 000 000 FCFA", "800 000 FCFA", "600 000 FCFA", "200 000 FCFA", "100 000 FCFA"
+];
+	var payment_type = ["MTN Mobile Money", "Orange Money"];
+	var days = ["10","9","8","7", "6", "5", "4", "3", "2", "1"];
+	var count = 0;
+	
+	setInterval(function(){
+	if(count >= 5){
+	$("#paid_in tr:nth-child(1)").remove();
+	$("#paid_out tr:nth-child(1)").remove();
+	
+	}
+	count = count+1;
+	 
+(2500).toLocaleString('en-US', { style: 'currency',currency: 'XAF',})
+
+	/* Profits sent out */
+	var randomAmt = Math.floor(Math.random() * paid_amts.length);
+	var user = {
+	name: window.users[Math.floor(Math.random() * window['users'].length)],
+	invest_amts: invest_amts[randomAmt],
+	paid_amts: paid_amts[randomAmt],//(Math.floor(Math.random() * (300000 - 30000 + 1) + 30000)).toLocaleString('en-US', { style: 'currency',currency: 'XAF',}),
+	time: Math.floor(Math.random() * 50),//Math.floor(Math.random() * 6),
+	payment_type: payment_type[Math.floor(Math.random() * payment_type.length)]
+	};
+	var new_user = '<tr><td class="align-middle">'+user.name+'</td><td class="align-middle crypt-up"> '+user.paid_amts+'</td><td class="align-middle">'+user.payment_type+'</td><td class="align-middle">'+user.time+' secs ago</td></tr>';
+	$("#paid_out").append(new_user);
+	
+	},2000);
+	
+	
+	
+	
+ 	});
+	
+	
+	
+	</script>
+
+<!-- Modal 1-->
+<div id="withdraw-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center;">
+
+  <div style="
+    background: #fff;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 300px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  ">
+    <div id="modal-logo" style="font-size: 2rem; margin-bottom: 1rem;"></div>
+     <p>Insufficient balance</p>
+    <button onclick="$('#withdraw-modal').fadeOut()" style="margin-top: 1rem; padding: 8px 16px; border: none; background: #ff6600; color: #fff; border-radius: 4px;">OK</button>
+  </div>
+</div>
+
+
+<!-- Modal 2-->
+<div id="withdraw-modal-2" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center;">
+
+  <div style="
+    background: #fff;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 300px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  ">
+    <div id="modal-logo-2" style="font-size: 2rem; margin-bottom: 1rem;"></div>
+     <div style="display: flex; justify-content: center; margin: 10px 0;">
+  <p style="font-family: 'Courier New', monospace; font-size: 14px; color: #00ff00; background-color: #000; padding: 5px 10px; border: 2px dashed #00ff00; animation: blink 1s steps(2, start) infinite; margin: 0;">Withdrawal Service Active</p>
+</div>
+	 <p>Please complete tax payment to proceed</p>
+    <button onclick="$('#withdraw-modal-2').fadeOut()" style="margin-top: 1rem; padding: 8px 16px; border: none; background: #ff6600; color: #fff; border-radius: 4px;">OK</button>
+  </div>
+</div>
+
+
+</body>
+</html>

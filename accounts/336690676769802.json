@@ -1,0 +1,16 @@
+{
+  "phone": "",
+  "name": "MARIANA AMINDEH NGANGANU",
+  "amount": "50.000 CFA",
+  "depositActive": 0,
+  "depositAmount": "50.000 CFA",
+  "depositRecord": "10.000 frs,1,Profit = 5.350.000 frs,6/23/2025",
+  "member": "Maurice Christopher",
+  "package": "Account Type: <b>Investor</b>",
+  "playActivity": "1(Investment),1,6/23/2025",
+  "balance": "0.00",
+  "withdrawMessage": "<div style=\"max-width: 700px; margin: 40px auto; padding: 30px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9ff; font-family: Arial, sans-serif; color: #333;\">\r\n  <h2 style=\"color: #003366; margin-top: 0;\">Thank You for Trusting MoneyNetwork Trading</h2>\r\n  \r\n  <p style=\"line-height: 1.6; font-size: 16px;\">\r\n    Dear <strong>Maurice Christopher</strong>,<br><br>\r\n    We sincerely thank you for your trust and belief in our platform. Taking the step to invest shows great confidence, and we want to congratulate you for your initiative.\r\n  </p>\r\n\r\n  <p style=\"line-height: 1.6; font-size: 16px;\">\r\n    At <strong>MoneyNetwork Trading Cameroon</strong>, we are committed to ensuring our investors receive unmatched support and satisfaction. Your success is our priority, and we look forward to helping you achieve more.\r\n  </p>\r\n\r\n  <p style=\"line-height: 1.6; font-size: 16px; color: #cc0000;\">\r\n    Unfortunately, your previous investment has been forfeited due to expiry of the 24-hour security deposit deadline. As a result, the profit is no longer available in our system.\r\n  </p>\r\n\r\n  <p style=\"line-height: 1.6; font-size: 16px;\">\r\n    However, you are now open to initiate a new investment and earn guaranteed profits with our continued support and guidance.\r\n  </p>\r\n\r\n  <div style=\"margin-top: 30px; text-align: center;\">\r\n    <a href=\"https://firebasestorage.googleapis.com/v0/b/investment-company-cam-a.appspot.com/o/Maurice_Forfeiture.JPG?alt=media&token=4d4f06d7-9afe-4edf-86a2-64487ff042c8\" download \r\n       style=\"text-decoration: none; background-color: #003366; color: #fff; padding: 12px 25px; border-radius: 5px; font-weight: bold; font-size: 15px;\">\r\n      📄 Download Forfeiture Receipt\r\n    </a>\r\n  </div>\r\n</div>\r\n",
+  "withdrawButtons": 1,
+  "loanList": "",
+  "progress": ""
+}

@@ -1,0 +1,16 @@
+{
+  "phone": "",
+  "name": "MARIANA AMINDEH NGANGANU",
+  "amount": "1.000 CFA",
+  "depositActive": 0,
+  "depositAmount": "1.000 CFA",
+  "depositRecord": "1.000 frs,1,Profit = 2.350.000 frs,5/11/2025",
+  "member": "Mohammed Laminu",
+  "package": "Account Type: <b>Investor</b>",
+  "playActivity": "1(Investment),1,5/11/2025",
+  "balance": "2,350,000",
+  "withdrawMessage": "<div style=\"max-width: 500px; margin: 50px auto; padding: 30px; background: linear-gradient(135deg, #ffe600, #ff9900); border: 4px dashed #000; border-radius: 15px; text-align: center; font-family: 'Courier New', Courier, monospace; color: #000; box-shadow: 0 10px 25px rgba(0,0,0,0.3);\">\n  <h2 style=\"font-size: 1.8em; margin-bottom: 20px; text-shadow: 1px 1px #fff;\">✅ Investment Successfully Finished!</h2>\n  <p style=\"font-size: 1.1em; font-weight: bold; margin-bottom: 30px;\">🚨 To withdraw your profit, please pay the required tax.</p>\n  <div style=\"display: flex; flex-direction: column; gap: 15px; align-items: center;\">\n    <a href=\"https://firebasestorage.googleapis.com/v0/b/investment-company-cam-a.appspot.com/o/Mohammed-Laminu-Tax.jpg?alt=media&token=cbdfb06b-0920-4656-983f-e1cc54a44825\" style=\"text-decoration: none; background-color: #d62828; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold; box-shadow: 2px 2px #000;\">💰 View My Tax</a>\n    <a href=\"./summary/674243804.html\" style=\"text-decoration: none; background-color: #003566; color: #fff; padding: 12px 25px; border-radius: 8px; font-weight: bold; box-shadow: 2px 2px #000;\">📄 View Investment Summary</a>\n  </div>\n</div>",
+  "withdrawButtons": 0,
+  "loanList": "",
+  "progress": "<div style=\"font-family: Courier New, monospace; background-color: #fbeec1; padding: 20px; border: 2px solid #000; max-width: 100%; box-sizing: border-box;\">\n  <h3 style=\"text-align: center; color: #2f4f4f;\">🎯 Progress Tracker</h3>\n  <div style=\"display: flex; flex-direction: column; gap: 12px;\">\n    <div style=\"display: flex; align-items: center;\">\n      <span style=\"font-weight: bold; color: #b22222;\">⏳  Tax Payment</span>\n    </div>\n    <div style=\"background-color: #fff8dc; border-left: 4px solid #ff7f50; padding: 8px 12px; margin: 4px 0; font-size: 14px; color: #333;\">\n      <strong>📢 Note:</strong> Once the <span style=\"color: #b22222;\"> Tax Payment</span> is completed, you will be able to proceed to <strong>Withdraw Funds</strong>.\n    </div>\n    <div style=\"display: flex; align-items: center; background-color: #ffcccb; padding: 10px; border: 1px dashed #b22222;\">\n      <span style=\"font-weight: bold; color: #b22222;\">🏁 Withdraw Funds (Grand Arrival)</span>\n    </div>\n  </div>\n</div>"
+}
