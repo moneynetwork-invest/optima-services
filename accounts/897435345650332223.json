@@ -14,10 +14,3 @@
 "progress": "<div style=\"font-family: Courier New, monospace; background-color: #fbeec1; padding: 20px; border: 2px solid #000; max-width: 100%; box-sizing: border-box;\">\r\n  <h3 style=\"text-align: center; color: #2f4f4f;\">\uD83C\uDFAF Progress Tracker<\/h3>\r\n  <div style=\"display: flex; flex-direction: column; gap: 12px;\">\r\n    \r\n    <div style=\"display: flex; align-items: center;\">\r\n      <span style=\"font-weight: bold; color: green;\">\u2714\uFE0F Investment<\/span>\r\n    <\/div>\r\n    \r\n     \r\n    <div style=\"display: flex; align-items: center;\">\r\n      <span style=\"font-weight: bold; color: #b22222;\">\u23F3 Tax Payment<\/span>\r\n    <\/div>\r\n    \r\n    <div style=\"background-color: #fff8dc; border-left: 4px solid #ff7f50; padding: 8px 12px; margin: 4px 0; font-size: 14px; color: #333;\">\r\n      <strong>\uD83D\uDCE2 Note:<\/strong> Once the <span style=\"color: #b22222;\">Tax Payment<\/span> is completed, you will be able to proceed to <strong>Withdraw Funds<\/strong>.\r\n    <\/div>\r\n    \r\n    <div style=\"display: flex; align-items: center; background-color: #ffcccb; padding: 10px; border: 1px dashed #b22222;\">\r\n      <span style=\"font-weight: bold; color: #b22222;\">\uD83C\uDFC1 Withdraw Funds (Grand Arrival)<\/span>\r\n    <\/div>\r\n    \r\n  <\/div>\r\n<\/div>\r\n\r\n\r\n",
 "investment-package":""
  }
- 
- 
- 
- 
- 
- 
- 
