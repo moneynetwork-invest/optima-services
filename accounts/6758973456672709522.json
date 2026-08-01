@@ -6,7 +6,7 @@
 "depositRecord":"5.000 FCFA,1,Profit = 2.500.000 FCFA,7/30/2026 - 20.000 FCFA,1,Profit = 0 FCFA,8/1/2026",
 "member":"Acho Solange Ndum",
 "package":"Account Type: <b>Standard Investor Account</b>",
-"playActivity":"Investment,1,7/30/2025 - MTN MoMo Withdrawal Activation,1,8/1/2026",
+"playActivity":"Investment,1,7/30/2026 - MTN MoMo Withdrawal Activation,1,8/1/2026",
 "balance":"2,500,000",
 "withdrawMessage":"<div style=\"display: flex; justify-content: center; align-items: center; height: 100vh;\">\n  <div style=\"font-family: 'Courier New', monospace; background-color: #fbeec1; border: 2px dashed #0a0a0a; padding: 20px; width: 320px; text-align: center; color: #000; box-shadow: 4px 4px #888888;\">\n    <div style=\"font-size: 24px; font-weight: bold; color: #b22222; margin-bottom: 10px;\">\n      Activating MTN MoMo Withdrawal...\n    </div>\n    <div style=\"font-size: 18px; margin-bottom: 15px; color: #003366;\">\n      Estimated Completion Time: <span style=\"font-weight: bold;\">6:00 PM</span>\n    </div>\n    <div style=\"animation: spin 2s linear infinite; font-size: 40px; color: #008000;\">\n      ⏳\n    </div>\n    <style>\n      @keyframes spin {\n        from {transform: rotate(0deg);}\n        to {transform: rotate(360deg);}\n      }\n    </style>\n  </div>\n</div>\n",
 "withdrawButtons":0,
